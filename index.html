@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ciclo Certo: Lembrete — Seu Tratamento e Ciclo em Dia</title>
+  <meta name="description" content="Ciclo Certo é o aplicativo definitivo para gerenciar medicamentos, pílulas anticoncepcionais, ciclos e lembretes pontuais com total privacidade e segurança offline.">
+  <meta name="keywords" content="Ciclo Certo, Lembrete de remédio, Pílula anticoncepcional, Ciclo menstrual, Gerenciador de medicamentos, Alarme de remédio, Google Play">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="assets/icon.png">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- CSS -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="ambient-glow top-left"></div>
+  <div class="ambient-glow bottom-right"></div>
+
+  <!-- Top Notification Bar: Destaque Play Store -->
+  <div class="top-notice-bar">
+    <div class="container top-notice-content">
+      <span class="top-badge">Google Play Store Ready</span>
+      <span>Conformidade com a Política de Dados do Desenvolvedor:</span>
+      <a href="privacidade.html">Ler a Política de Privacidade Oficial</a>
+      <span style="opacity: 0.5;">|</span>
+      <a href="termos.html">Termos de Uso</a>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container site-nav">
+      <a href="index.html" class="nav-brand">
+        <img src="assets/icon.png" alt="Ciclo Certo Ícone" class="nav-logo">
+        <div>
+          <span class="brand-name">Ciclo Certo</span>
+          <span class="brand-tag">Lembrete & Ciclos</span>
+        </div>
+      </a>
+      <ul class="nav-links">
+        <li><a href="#recursos" class="nav-link">Recursos</a></li>
+        <li><a href="#como-funciona" class="nav-link">Como Funciona</a></li>
+        <li><a href="#seguranca" class="nav-link">Segurança & Dados</a></li>
+        <li><a href="privacidade.html" class="nav-link highlight">🔒 Política de Privacidade</a></li>
+        <li><a href="#faq" class="nav-link">Dúvidas</a></li>
+      </ul>
+      <div class="nav-actions">
+        <a href="privacidade.html" class="btn btn-privacy btn-sm">Privacidade Play Store</a>
+        <a href="#download" class="btn btn-primary btn-sm">Baixar App</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="container">
+      <div class="hero-grid">
+        <div class="hero-content">
+          <div class="hero-badge-pill">
+            <span class="pill-dot"></span>
+            <span>Versão 1.0 Oficial para Android</span>
+          </div>
+          <h1 class="hero-title">
+            Nunca mais esqueça <br>sua dose ou o <br>
+            <span class="gradient-text">seu ciclo correto.</span>
+          </h1>
+          <p class="hero-desc">
+            Organize pílulas anticoncepcionais, tratamentos contínuos e remédios pontuais com alarmes que tocam na hora certa. Totalmente <strong>offline-first</strong> e com privacidade blindada.
+          </p>
+
+          <div class="hero-cta-group">
+            <a href="#download" class="btn btn-primary">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M3.609 1.814L13.792 12 3.61 22.186a2.36 2.36 0 0 1-.61-.954V2.768c.176-.364.385-.688.61-.954zm11.602 11.602l2.366 2.366-11.8 6.812 9.434-9.178zm0-2.832L5.776 1.406l11.796 6.812-2.36 2.366zm1.414 1.414l3.18 1.836c1.077.622 1.077 1.636 0 2.258l-3.18 1.836-2.122-2.122 2.122-2.808z"/>
+              </svg>
+              Disponível na Google Play
+            </a>
+            <a href="privacidade.html" class="btn btn-secondary">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+              </svg>
+              Política de Privacidade
+            </a>
+          </div>
+
+          <div class="hero-trust-badges">
+            <div class="trust-item">
+              <span class="trust-icon">✓</span>
+              <span>100% Offline-First</span>
+            </div>
+            <div class="trust-item">
+              <span class="trust-icon">✓</span>
+              <span>Alarme Exato Android</span>
+            </div>
+            <div class="trust-item">
+              <span class="trust-icon">✓</span>
+              <span>Bloqueio por Biometria</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Hero Visual Mockup -->
+        <div class="hero-visual">
+          <div class="phone-frame">
+            <div class="phone-inner">
+              <img src="assets/screen1.png" alt="Tela do Ciclo Certo" class="phone-screen">
+            </div>
+          </div>
+
+          <!-- Floating Badges -->
+          <div class="floating-card card-left">
+            <div class="floating-icon purple">⏰</div>
+            <div class="floating-text">
+              <h5>Alarme Pontual</h5>
+              <p>Não depende de conexão</p>
+            </div>
+          </div>
+
+          <div class="floating-card card-right">
+            <div class="floating-icon green">🔒</div>
+            <div class="floating-text">
+              <h5>Privacidade Total</h5>
+              <p>Dados salvos no aparelho</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Google Play Privacy Spotlight Card -->
+  <section class="privacy-spotlight-section">
+    <div class="container">
+      <div class="privacy-spotlight-card">
+        <div class="spotlight-left">
+          <div class="spotlight-pill">🛡️ Destaque Play Store — Data Safety</div>
+          <h2 class="spotlight-title">Política de Privacidade Transparente & Auditável</h2>
+          <p class="spotlight-desc">
+            Para publicação na Google Play Console, disponibilizamos o documento público detalhado conforme as diretrizes de dados do usuário e segurança da Google.
+          </p>
+          <div class="spotlight-points">
+            <div class="spotlight-point">
+              <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>
+              <span>Pacote: <code>com.ciclocerto.app</code></span>
+            </div>
+            <div class="spotlight-point">
+              <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>
+              <span>Uso justificado de Alarmes Exatos</span>
+            </div>
+            <div class="spotlight-point">
+              <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>
+              <span>Exclusão total de dados garantida</span>
+            </div>
+            <div class="spotlight-point">
+              <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>
+              <span>Em conformidade com LGPD & GDPR</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="spotlight-right">
+          <a href="privacidade.html" class="btn btn-primary" style="width: 100%;">
+            Abrir Política Completa
+          </a>
+          <a href="termos.html" class="btn btn-secondary" style="width: 100%;">
+            Ver Termos de Uso
+          </a>
+          <div class="url-copy-box" title="URL para cadastrar na Play Store">
+            <strong>Link Play Store:</strong><br>
+            <code>https://alefdias.github.io/CicloCerto/privacidade.html</code>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section id="recursos" class="features-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Recursos Poderosos</span>
+        <h2 class="section-title">Tudo o que você precisa para manter seu tratamento em dia</h2>
+        <p class="section-desc">Criado com foco em praticidade diária, visual intuitivo e zero frustração com alarmes que falham.</p>
+      </div>
+
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon-wrapper indigo">🔔</div>
+          <h3 class="feature-title">Alarmes Exatos & Confiáveis</h3>
+          <p class="feature-desc">Integração nativa com <em>Exact Alarm</em> do Android. Seu alarme soa com precisão matemática mesmo se o celular estiver em modo de economia de energia.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon-wrapper pink">🌸</div>
+          <h3 class="feature-title">Ciclos e Pílulas Anticoncepcionais</h3>
+          <p class="feature-desc">Esquemas customizados de 21, 24 ou 28 dias com cálculo automático dos dias de pausa e recomeço de nova cartela sem complicação.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon-wrapper emerald">📦</div>
+          <h3 class="feature-title">Controle de Estoque & Cartelas</h3>
+          <p class="feature-desc">O app calcula quando sua medicação vai acabar e te avisa com antecedência para você comprar uma nova caixa sem interrupções.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon-wrapper cyan">💾</div>
+          <h3 class="feature-title">Arquitetura Offline-First</h3>
+          <p class="feature-desc">Seus dados pertencem a você. O app funciona perfeitamente sem sinal de internet ou wi-fi, mantendo tudo guardado com segurança local.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon-wrapper amber">👆</div>
+          <h3 class="feature-title">Proteção Biométrica</h3>
+          <p class="feature-desc">Proteja seus registros e tratamentos íntimos com biometria ou reconhecimento facial do próprio aparelho celular.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon-wrapper violet">📲</div>
+          <h3 class="feature-title">Compartilhamento por QR Code</h3>
+          <p class="feature-desc">Exporte ou compartilhe receitas e cronogramas de dosagem instantaneamente através de leitura rápida de QR Code com a câmera.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Showcase Gallery -->
+  <section id="como-funciona" class="showcase-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Interface Moderna</span>
+        <h2 class="section-title">Design pensado para facilidade no dia a dia</h2>
+        <p class="section-desc">Telas limpas, contrastes bem definidos e botões de ação rápida para registrar suas doses em segundos.</p>
+      </div>
+
+      <div class="showcase-grid">
+        <div class="showcase-card">
+          <img src="assets/screen1.png" alt="Tela de Lembretes e Doses" class="showcase-img">
+          <div class="showcase-info">
+            <h4>Visão Diária de Doses</h4>
+            <p>Confirme com 1 toque os remédios já tomados</p>
+          </div>
+        </div>
+
+        <div class="showcase-card">
+          <img src="assets/screen2.png" alt="Cadastro de Medicamentos" class="showcase-img">
+          <div class="showcase-info">
+            <h4>Configuração de Ciclos</h4>
+            <p>Horários, dosagens e dias de pausa personalizados</p>
+          </div>
+        </div>
+
+        <div class="showcase-card">
+          <img src="assets/screen3.png" alt="Histórico e Calendário" class="showcase-img">
+          <div class="showcase-info">
+            <h4>Histórico Completo</h4>
+            <p>Acompanhe a sua aderência e regularidade</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Security & Privacy Deep Dive -->
+  <section id="seguranca" class="security-section">
+    <div class="container">
+      <div class="security-box">
+        <div class="section-header" style="margin-bottom: 2rem;">
+          <span class="section-tag">Transparência Total</span>
+          <h2 class="section-title" style="color: #fff;">Como tratamos sua Privacidade</h2>
+          <p class="section-desc">Entenda de forma clara quais informações existem e como elas são resguardadas.</p>
+        </div>
+
+        <div class="security-grid">
+          <div class="security-item">
+            <h4>Sem Venda de Dados de Saúde</h4>
+            <p>Nunca vendemos, alugamos ou compartilhamos dados médicos para anunciantes, planos de saúde ou corretores de dados.</p>
+          </div>
+
+          <div class="security-item">
+            <h4>Permissões Estritamente Justificadas</h4>
+            <p>Usamos a câmera apenas para ler QR Codes de rotina e o alarme exato apenas para avisar a dose. Nada além do estritamente necessário.</p>
+          </div>
+
+          <div class="security-item">
+            <h4>Exclusão Simplificada de Dados</h4>
+            <p>Você pode apagar 100% dos seus dados com um simples clique em limpar dados no seu aparelho ou na desinstalação.</p>
+          </div>
+
+          <div class="security-item">
+            <h4>Publicidade Ética via Google AdMob</h4>
+            <p>Monetização transparente com a rede oficial do Google, respeitando escolhas de personalização do usuário.</p>
+          </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 2.5rem;">
+          <a href="privacidade.html" class="btn btn-privacy">
+            Acessar o Documento Completo da Política de Privacidade →
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section id="faq" class="faq-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Dúvidas Comuns</span>
+        <h2 class="section-title">Perguntas Frequentes</h2>
+      </div>
+
+      <div class="faq-list">
+        <div class="faq-item">
+          <div class="faq-question">O aplicativo funciona sem internet?</div>
+          <div class="faq-answer">Sim! O Ciclo Certo foi construído como Offline-First. Todos os alarmes, cálculos de ciclos e estoques funcionam normalmente sem conexão com a internet.</div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">Por que o app pede permissão de Alarme Exato?</div>
+          <div class="faq-answer">Medicamentos de uso contínuo ou anticoncepcionais exigem pontualidade rigorosa. O Android exige essa permissão especial para que o sistema não atrase a notificação em prol da economia de bateria.</div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">Onde posso ler a Política de Privacidade para o Google Play?</div>
+          <div class="faq-answer">Você pode acessar nossa página dedicada em <a href="privacidade.html" style="color:#38bdf8; font-weight:600;">Política de Privacidade</a>. Essa URL é permanente e está em conformidade com o Google Play Console.</div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">Como apago todos os meus registros do aplicativo?</div>
+          <div class="faq-answer">Você pode limpar o armazenamento do app diretamente nas configurações do seu celular Android ou desinstalar o app. Como os dados residem localmente no seu aparelho, eles são eliminados instantaneamente.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Download Section -->
+  <section id="download" class="cta-banner-section">
+    <div class="container">
+      <div class="cta-banner">
+        <h2>Pronto para assumir o controle do seu tratamento?</h2>
+        <p>Baixe agora o Ciclo Certo gratuitamente na Google Play Store e nunca mais perca a hora de um remédio.</p>
+        <div class="cta-buttons">
+          <a href="https://play.google.com/store/apps/details?id=com.ciclocerto.app" target="_blank" class="btn btn-primary" style="background:#fff; color:#1e1b4b; font-weight:700;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="#1e1b4b">
+              <path d="M3.609 1.814L13.792 12 3.61 22.186a2.36 2.36 0 0 1-.61-.954V2.768c.176-.364.385-.688.61-.954zm11.602 11.602l2.366 2.366-11.8 6.812 9.434-9.178zm0-2.832L5.776 1.406l11.796 6.812-2.36 2.366zm1.414 1.414l3.18 1.836c1.077.622 1.077 1.636 0 2.258l-3.18 1.836-2.122-2.122 2.122-2.808z"/>
+            </svg>
+            Baixar na Google Play
+          </a>
+          <a href="privacidade.html" class="btn btn-secondary">
+            Ver Política de Privacidade
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <h4>Ciclo Certo: Lembrete</h4>
+          <p>Seu tratamento organizado. Aplicativo seguro, moderno e offline-first para gerenciamento de medicamentos, pílulas e ciclos.</p>
+        </div>
+        <div class="footer-col">
+          <h5>Navegação</h5>
+          <ul class="footer-links">
+            <li><a href="#recursos">Recursos</a></li>
+            <li><a href="#como-funciona">Interface</a></li>
+            <li><a href="#seguranca">Segurança</a></li>
+            <li><a href="#faq">Perguntas Frequentes</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Conformidade Legal</h5>
+          <ul class="footer-links">
+            <li><a href="privacidade.html" class="privacy-link">🔒 Política de Privacidade</a></li>
+            <li><a href="privacy.html">Privacy Policy (Mirror)</a></li>
+            <li><a href="termos.html">Termos de Uso</a></li>
+            <li><a href="https://play.google.com/store/apps/details?id=com.ciclocerto.app" target="_blank">Google Play Store</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Desenvolvedor</h5>
+          <ul class="footer-links">
+            <li><span style="color: #cbd5e1;">Alef Dias</span></li>
+            <li><a href="mailto:suporte.ciclocerto@gmail.com">suporte.ciclocerto@gmail.com</a></li>
+            <li><a href="https://github.com/alefdias/CicloCerto" target="_blank">GitHub: alefdias/CicloCerto</a></li>
+            <li><span style="color: #64748b; font-size: 0.8rem;">ID: com.ciclocerto.app</span></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div>&copy; 2026 Ciclo Certo: Lembrete. Desenvolvido por Alef Dias.</div>
+        <div>URL para Google Play Console: <code style="color: #38bdf8;">https://alefdias.github.io/CicloCerto/privacidade.html</code></div>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

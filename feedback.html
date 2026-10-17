@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Feedback & Relato de Bugs — Ciclo Certo: Lembrete</title>
+  <meta name="description" content="Canal oficial para testadores e usuários enviarem sugestões, dúvidas e reportarem bugs do aplicativo Ciclo Certo: Lembrete diretamente para o desenvolvedor.">
+  <meta name="robots" content="index, follow">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="assets/icon.png">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- CSS -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="ambient-glow top-left"></div>
+  <div class="ambient-glow bottom-right"></div>
+
+  <!-- Top Notification Bar: Destaque Play Store -->
+  <div class="top-notice-bar">
+    <div class="container top-notice-content">
+      <span class="top-badge">Canal dos Testadores</span>
+      <span>Sua opinião melhora o Ciclo Certo:</span>
+      <a href="privacidade.html">Política de Privacidade</a>
+      <span style="opacity: 0.5;">|</span>
+      <a href="termos.html">Termos de Uso</a>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container site-nav">
+      <a href="index.html" class="nav-brand">
+        <img src="assets/icon.png" alt="Ícone Ciclo Certo" class="nav-logo">
+        <div>
+          <span class="brand-name">Ciclo Certo</span>
+          <span class="brand-tag">Lembrete & Saúde</span>
+        </div>
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html" class="nav-link">Início</a></li>
+        <li><a href="index.html#recursos" class="nav-link">Recursos</a></li>
+        <li><a href="index.html#seguranca" class="nav-link">Segurança</a></li>
+        <li><a href="feedback.html" class="nav-link active highlight">💬 Feedback & Bugs</a></li>
+        <li><a href="privacidade.html" class="nav-link">Política de Privacidade</a></li>
+        <li><a href="termos.html" class="nav-link">Termos</a></li>
+      </ul>
+      <div class="nav-actions">
+        <a href="index.html#download" class="btn btn-primary btn-sm">Baixar App</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Legal / Header da Página -->
+  <section class="legal-page-header">
+    <div class="container">
+      <div class="legal-breadcrumbs">
+        <a href="index.html">Início</a>
+        <span>/</span>
+        <span>Comunidade & Testes</span>
+        <span>/</span>
+        <span style="color: #0f172a; font-weight: 600;">Feedback & Relato de Bugs</span>
+      </div>
+      <h1 class="legal-title">Central de Feedback & Bugs</h1>
+      <div class="legal-meta">
+        <span class="legal-badge" style="background: #e0e7ff; color: #4338ca;">Canal Oficial dos Testadores</span>
+        <span>Envio direto para a equipe de desenvolvimento</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Conteúdo Principal -->
+  <main class="container">
+    <!-- Banner de Sucesso (Exibido dinamicamente se ?enviado=sucesso) -->
+    <div id="sucesso-banner" class="alert-success-banner" style="display: none;">
+      <div class="alert-success-icon">✓</div>
+      <div>
+        <strong style="font-size: 1.05rem;">Feedback enviado com sucesso!</strong>
+        <p style="margin-top: 0.25rem; font-size: 0.9rem; opacity: 0.95;">
+          Muito obrigado pela sua colaboração! Sua mensagem foi enviada diretamente para o desenvolvedor (<strong>devalefdias44@gmail.com</strong>). Analisaremos o relato com prioridade máxima.
+        </p>
+      </div>
+    </div>
+
+    <div class="feedback-grid">
+      <!-- Coluna Principal: Formulário -->
+      <div class="feedback-form-card">
+        <div style="margin-bottom: 2rem;">
+          <h2 style="font-size: 1.5rem; font-weight: 800; color: var(--text-main); margin-bottom: 0.5rem;">
+            Relatar Bug ou Enviar Sugestão
+          </h2>
+          <p style="color: var(--text-muted); font-size: 0.95rem;">
+            Encontrou alguma falha no aplicativo, tem uma ideia de melhoria ou precisa de suporte? Preencha o formulário abaixo. O envio é automático e direto.
+          </p>
+        </div>
+
+        <!-- Formulário que envia para devalefdias44@gmail.com -->
+        <form action="https://formsubmit.co/devalefdias44@gmail.com" method="POST">
+          <!-- Configurações FormSubmit -->
+          <input type="hidden" name="_subject" value="[Ciclo Certo] Novo Relato de Testador / Bug">
+          <input type="hidden" name="_template" value="table">
+          <input type="hidden" name="_captcha" value="false">
+          <input type="hidden" name="_next" value="https://alefdias.github.io/CicloCerto/feedback.html?enviado=sucesso">
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="nome" class="form-label">Seu Nome / Apelido</label>
+              <input type="text" id="nome" name="nome" class="form-control" placeholder="Ex: Maria Santos" required>
+            </div>
+            <div class="form-group">
+              <label for="email" class="form-label">Seu E-mail <span class="required">*</span></label>
+              <input type="email" id="email" name="email" class="form-control" placeholder="seu-email@exemplo.com" required>
+              <div class="form-hint">Usaremos apenas para responder ao seu relato.</div>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="tipo" class="form-label">Tipo de Mensagem <span class="required">*</span></label>
+              <select id="tipo" name="tipo_mensagem" class="form-control" required>
+                <option value="Bug / Erro no App" selected>🐛 Relato de Bug / Erro no Aplicativo</option>
+                <option value="Sugestão de Recurso">💡 Sugestão de Melhoria / Novo Recurso</option>
+                <option value="Problema com Notificação / Alarme">⏰ Problema com Alarmes ou Notificações</option>
+                <option value="Dúvida / Outro">💬 Dúvida Geral ou Elogio</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="dispositivo" class="form-label">Modelo do Celular & Android</label>
+              <input type="text" id="dispositivo" name="dispositivo" class="form-control" placeholder="Ex: Samsung Galaxy S22 - Android 14">
+              <div class="form-hint">Ajuda a reproduzir e consertar o erro com precisão.</div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="assunto" class="form-label">Título Resumido <span class="required">*</span></label>
+            <input type="text" id="assunto" name="assunto_resumo" class="form-control" placeholder="Ex: Alarme de remédio não tocou com a tela bloqueada" required>
+          </div>
+
+          <div class="form-group">
+            <label for="mensagem" class="form-label">Descrição Detalhada do que Aconteceu <span class="required">*</span></label>
+            <textarea id="mensagem" name="descricao_detalhada" class="form-control" rows="5" placeholder="Descreva o que você estava fazendo no aplicativo, o que esperava que acontecesse e o que realmente aconteceu..." required></textarea>
+          </div>
+
+          <div class="form-group">
+            <label for="passos" class="form-label">Passo a passo para ver o erro (opcional)</label>
+            <textarea id="passos" name="passos_reproducao" class="form-control" rows="3" placeholder="Exemplo:&#10;1. Abri a aba de Medicamentos&#10;2. Cliquei em Adicionar Novo&#10;3. O aplicativo fechou inesperadamente"></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center; padding: 1rem 1.5rem; font-size: 1.05rem; cursor: pointer;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 0.5rem;">
+              <line x1="22" y1="2" x2="11" y2="13"></line>
+              <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+            </svg>
+            Enviar Relato para o Desenvolvedor
+          </button>
+        </form>
+      </div>
+
+      <!-- Coluna Lateral: Dicas e Contato -->
+      <aside class="feedback-sidebar">
+        <div class="feedback-info-card" style="border-left: 4px solid var(--primary);">
+          <h3>
+            <span>📬</span> Contato Direto
+          </h3>
+          <p>
+            Você também pode entrar em contato diretamente com o desenvolvedor responsável por e-mail:
+          </p>
+          <div style="background: #f1f5f9; padding: 0.85rem 1rem; border-radius: var(--radius-sm); font-family: monospace; font-size: 0.9rem; color: #0f172a; word-break: break-all; margin-bottom: 1rem;">
+            devalefdias44@gmail.com
+          </div>
+          <p style="font-size: 0.85rem; color: var(--text-dim); margin-bottom: 0;">
+            Tempo médio de resposta: em até 24 horas úteis.
+          </p>
+        </div>
+
+        <div class="feedback-info-card">
+          <h3>
+            <span>🎯</span> Dicas para um bom relato
+          </h3>
+          <ul class="feedback-tip-list">
+            <li>
+              <span>📱</span>
+              <div>
+                <strong>Informe o aparelho:</strong> Marcas e versões do Android gerenciam bateria e alarmes de formas diferentes.
+              </div>
+            </li>
+            <li>
+              <span>🔄</span>
+              <div>
+                <strong>Passo a passo:</strong> Conte os cliques que você deu até a falha aparecer.
+              </div>
+            </li>
+            <li>
+              <span>💡</span>
+              <div>
+                <strong>Sugestões são bem-vindas:</strong> Se você sentiu falta de algum recurso de saúde ou lembrete, nos conte!
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <div class="feedback-info-card" style="background: linear-gradient(135deg, #f0fdf4 0%, #e0f2fe 100%); border-color: #bbf7d0;">
+          <h3 style="color: #065f46;">
+            <span>🛡️</span> Privacidade Garantida
+          </h3>
+          <p style="color: #166534; font-size: 0.88rem; margin-bottom: 0;">
+            As informações enviadas neste formulário são utilizadas estritamente para suporte técnico, depuração de erros e aprimoramento do <strong>Ciclo Certo</strong>, em conformidade com as diretrizes da Google Play Store e LGPD.
+          </p>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <h4>Ciclo Certo: Lembrete</h4>
+          <p>Seu tratamento organizado. Aplicativo seguro, moderno e offline-first para gerenciamento de medicamentos, pílulas e ciclos.</p>
+        </div>
+        <div class="footer-col">
+          <h5>Navegação</h5>
+          <ul class="footer-links">
+            <li><a href="index.html#recursos">Recursos</a></li>
+            <li><a href="index.html#como-funciona">Interface</a></li>
+            <li><a href="index.html#seguranca">Segurança</a></li>
+            <li><a href="feedback.html" style="color: var(--primary); font-weight: 700;">💬 Feedback & Bugs</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Conformidade Legal</h5>
+          <ul class="footer-links">
+            <li><a href="privacidade.html" class="privacy-link">🔒 Política de Privacidade</a></li>
+            <li><a href="privacy.html">Privacy Policy (Mirror)</a></li>
+            <li><a href="termos.html">Termos de Uso</a></li>
+            <li><a href="https://play.google.com/store/apps/details?id=com.ciclocerto.app" target="_blank">Google Play Store</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Desenvolvedor</h5>
+          <ul class="footer-links">
+            <li><span style="color: #0f172a; font-weight: 600;">Alef Dias</span></li>
+            <li><a href="mailto:devalefdias44@gmail.com">devalefdias44@gmail.com</a></li>
+            <li><a href="feedback.html">Canal de Feedback</a></li>
+            <li><span style="color: #64748b; font-size: 0.8rem;">ID: com.ciclocerto.app</span></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div>&copy; 2026 Ciclo Certo: Lembrete. Desenvolvido por Alef Dias.</div>
+        <div>URL para Google Play Console: <code style="color: #0284c7; font-weight: 700;">https://alefdias.github.io/CicloCerto/privacidade.html</code></div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Verifica se a página foi carregada após envio com sucesso
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.get('enviado') === 'sucesso') {
+      const banner = document.getElementById('sucesso-banner');
+      if (banner) {
+        banner.style.display = 'flex';
+        banner.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+    }
+  </script>
+</body>
+</html>

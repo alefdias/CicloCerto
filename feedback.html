@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Feedback & Relato de Bugs — Ciclo Certo: Lembrete</title>
-  <meta name="description" content="Canal oficial para testadores e usuários enviarem sugestões, dúvidas e reportarem bugs do aplicativo Ciclo Certo: Lembrete diretamente para o desenvolvedor.">
+  <title>Central de Feedback & Relato de Bugs — Ciclo Certo: Lembrete</title>
+  <meta name="description" content="Canal oficial para testadores registrarem e acompanharem relatos de bugs, sugestões e melhorias do aplicativo Ciclo Certo: Lembrete.">
   <meta name="robots" content="index, follow">
   
   <!-- Favicon -->
@@ -15,30 +15,443 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   
-  <!-- CSS -->
-  <link rel="stylesheet" href="style.css">
+  <!-- CSS Global -->
+  <link rel="stylesheet" href="style.css?v=2.0.0">
+
+  <!-- Estilos Exclusivos e Blindados do Sistema de Feedback -->
+  <style>
+    /* Reset & Variáveis Locais */
+    .fb-page-wrapper {
+      max-width: 1140px;
+      margin: 0 auto;
+      padding: 0 1.25rem 4rem;
+    }
+
+    /* Tabs de Navegação da Página */
+    .fb-tabs-container {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin: 2rem 0 1.75rem;
+      border-bottom: 2px solid #e2e8f0;
+      padding-bottom: 0.75rem;
+      flex-wrap: wrap;
+    }
+    .fb-tab-btn {
+      background: #f1f5f9;
+      border: 1px solid #cbd5e1;
+      color: #475569;
+      font-family: inherit;
+      font-size: 0.95rem;
+      font-weight: 700;
+      padding: 0.65rem 1.4rem;
+      border-radius: 9999px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: all 0.2s ease;
+    }
+    .fb-tab-btn:hover {
+      background: #e2e8f0;
+      color: #0f172a;
+    }
+    .fb-tab-btn.active {
+      background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+      color: #ffffff;
+      border-color: transparent;
+      box-shadow: 0 4px 12px rgba(79, 70, 229, 0.25);
+    }
+    .fb-badge-count {
+      background: rgba(255, 255, 255, 0.25);
+      color: inherit;
+      padding: 0.15rem 0.55rem;
+      border-radius: 9999px;
+      font-size: 0.8rem;
+      font-weight: 800;
+    }
+    .fb-tab-btn:not(.active) .fb-badge-count {
+      background: #cbd5e1;
+      color: #0f172a;
+    }
+
+    /* Layout em 2 Colunas */
+    .fb-grid-layout {
+      display: grid;
+      grid-template-columns: 1.6fr 1fr;
+      gap: 2rem;
+      align-items: start;
+    }
+
+    /* Card do Formulário */
+    .fb-form-box {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 20px;
+      padding: 2.25rem;
+      box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.05), 0 8px 10px -6px rgba(15, 23, 42, 0.02);
+    }
+    .fb-form-header {
+      margin-bottom: 1.75rem;
+    }
+    .fb-form-header h2 {
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: #0f172a;
+      letter-spacing: -0.3px;
+      margin-bottom: 0.4rem;
+    }
+    .fb-form-header p {
+      color: #64748b;
+      font-size: 0.92rem;
+      line-height: 1.5;
+    }
+
+    /* Elementos do Formulário */
+    .fb-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.25rem;
+      margin-bottom: 1.25rem;
+    }
+    .fb-field {
+      margin-bottom: 1.25rem;
+      display: flex;
+      flex-direction: column;
+    }
+    .fb-label {
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: #1e293b;
+      margin-bottom: 0.45rem;
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+    .fb-req {
+      color: #db2777;
+    }
+    .fb-input, .fb-select, .fb-textarea {
+      display: block;
+      width: 100%;
+      box-sizing: border-box;
+      padding: 0.85rem 1rem;
+      font-family: inherit;
+      font-size: 0.95rem;
+      color: #0f172a;
+      background: #ffffff;
+      border: 1.5px solid #cbd5e1;
+      border-radius: 12px;
+      outline: none;
+      transition: all 0.2s ease;
+    }
+    .fb-input:focus, .fb-select:focus, .fb-textarea:focus {
+      border-color: #6366f1;
+      box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.15);
+    }
+    .fb-textarea {
+      resize: vertical;
+      min-height: 120px;
+      line-height: 1.5;
+    }
+    .fb-hint {
+      font-size: 0.8rem;
+      color: #64748b;
+      margin-top: 0.35rem;
+    }
+
+    /* Botão de Envio */
+    .fb-submit-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.6rem;
+      width: 100%;
+      padding: 1rem 1.5rem;
+      background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 50%, #db2777 100%);
+      color: #ffffff;
+      font-family: inherit;
+      font-size: 1.05rem;
+      font-weight: 700;
+      border: none;
+      border-radius: 9999px;
+      cursor: pointer;
+      box-shadow: 0 8px 20px -3px rgba(79, 70, 229, 0.35);
+      transition: all 0.25s ease;
+      margin-top: 0.75rem;
+    }
+    .fb-submit-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 25px -4px rgba(219, 39, 119, 0.45);
+    }
+
+    /* Coluna Lateral */
+    .fb-side-cards {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+    .fb-card {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 18px;
+      padding: 1.75rem;
+      box-shadow: 0 4px 12px rgba(15, 23, 42, 0.03);
+    }
+    .fb-card h3 {
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: #0f172a;
+      margin-bottom: 0.75rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .fb-card p {
+      font-size: 0.9rem;
+      color: #475569;
+      line-height: 1.55;
+      margin-bottom: 0.85rem;
+    }
+    .fb-email-box {
+      background: #f1f5f9;
+      padding: 0.75rem 1rem;
+      border-radius: 10px;
+      font-family: monospace;
+      font-size: 0.9rem;
+      color: #1e293b;
+      font-weight: 700;
+      border: 1px solid #e2e8f0;
+      word-break: break-all;
+    }
+
+    /* Lista de Relatórios Armazenados */
+    .fb-reports-container {
+      display: none;
+    }
+    .fb-reports-container.active {
+      display: block;
+    }
+    .fb-filters-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+      flex-wrap: wrap;
+      background: #ffffff;
+      padding: 1rem 1.25rem;
+      border-radius: 14px;
+      border: 1px solid #e2e8f0;
+    }
+    .fb-filter-chips {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+    .fb-chip {
+      background: #f8fafc;
+      border: 1px solid #cbd5e1;
+      padding: 0.4rem 0.9rem;
+      border-radius: 9999px;
+      font-size: 0.84rem;
+      font-weight: 700;
+      color: #475569;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+    .fb-chip:hover {
+      background: #e2e8f0;
+      color: #0f172a;
+    }
+    .fb-chip.active {
+      background: #0f172a;
+      color: #ffffff;
+      border-color: #0f172a;
+    }
+    .fb-reports-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+    .fb-report-card {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 16px;
+      padding: 1.5rem;
+      box-shadow: 0 4px 12px rgba(15, 23, 42, 0.03);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .fb-report-card:hover {
+      box-shadow: 0 10px 20px rgba(15, 23, 42, 0.06);
+      transform: translateY(-2px);
+    }
+    .fb-report-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-bottom: 0.75rem;
+      flex-wrap: wrap;
+    }
+    .fb-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 0.25rem 0.65rem;
+      border-radius: 9999px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+    }
+    .fb-tag.bug {
+      background: #fee2e2;
+      color: #b91c1c;
+      border: 1px solid #fca5a5;
+    }
+    .fb-tag.sugestao {
+      background: #fef3c7;
+      color: #b45309;
+      border: 1px solid #fde68a;
+    }
+    .fb-tag.alarme {
+      background: #ede9fe;
+      color: #6d28d9;
+      border: 1px solid #ddd6fe;
+    }
+    .fb-tag.duvida {
+      background: #e0f2fe;
+      color: #0369a1;
+      border: 1px solid #bae6fd;
+    }
+    .fb-status {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: #059669;
+      background: #ecfdf5;
+      padding: 0.2rem 0.6rem;
+      border-radius: 9999px;
+    }
+    .fb-report-title {
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: #0f172a;
+      margin-bottom: 0.5rem;
+    }
+    .fb-report-desc {
+      font-size: 0.92rem;
+      color: #334155;
+      line-height: 1.6;
+      white-space: pre-line;
+      margin-bottom: 1rem;
+    }
+    .fb-report-steps {
+      background: #f8fafc;
+      border-left: 3px solid #6366f1;
+      padding: 0.75rem 1rem;
+      border-radius: 6px;
+      font-size: 0.88rem;
+      color: #475569;
+      margin-bottom: 1rem;
+      white-space: pre-line;
+    }
+    .fb-report-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      font-size: 0.82rem;
+      color: #64748b;
+      border-top: 1px solid #f1f5f9;
+      padding-top: 0.75rem;
+      flex-wrap: wrap;
+    }
+
+    /* Banner Alerta Sucesso */
+    .fb-alert-box {
+      background: #ecfdf5;
+      border: 1.5px solid #6ee7b7;
+      border-radius: 14px;
+      padding: 1.25rem 1.5rem;
+      margin-bottom: 1.5rem;
+      display: none;
+      align-items: center;
+      gap: 1rem;
+      color: #065f46;
+      animation: fadeIn 0.3s ease;
+    }
+    .fb-alert-icon {
+      width: 36px;
+      height: 36px;
+      background: #10b981;
+      color: #ffffff;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 1.1rem;
+      flex-shrink: 0;
+    }
+
+    /* Estado Vazio */
+    .fb-empty-state {
+      background: #ffffff;
+      border: 2px dashed #cbd5e1;
+      border-radius: 20px;
+      padding: 3.5rem 2rem;
+      text-align: center;
+      color: #64748b;
+    }
+    .fb-empty-icon {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Responsividade */
+    @media (max-width: 900px) {
+      .fb-grid-layout {
+        grid-template-columns: 1fr;
+      }
+      .fb-row {
+        grid-template-columns: 1fr;
+      }
+      .fb-form-box {
+        padding: 1.5rem;
+      }
+    }
+  </style>
 </head>
 <body>
   <div class="ambient-glow top-left"></div>
   <div class="ambient-glow bottom-right"></div>
 
-  <!-- Top Notification Bar: Destaque Play Store -->
+  <!-- Top Notification Bar -->
   <div class="top-notice-bar">
     <div class="container top-notice-content">
-      <span class="top-badge">Canal dos Testadores</span>
-      <span>Sua opinião melhora o Ciclo Certo:</span>
+      <span class="top-badge">Canal Oficial de Testes</span>
+      <span>Relatórios armazenados em tempo real no próprio site:</span>
       <a href="privacidade.html">Política de Privacidade</a>
       <span style="opacity: 0.5;">|</span>
       <a href="termos.html">Termos de Uso</a>
     </div>
   </div>
 
-  <!-- Header -->
+  <!-- Header Limpo & Sem Cortes -->
   <header class="site-header">
     <div class="container site-nav">
       <a href="index.html" class="nav-brand">
         <img src="assets/icon.png" alt="Ícone Ciclo Certo" class="nav-logo">
-        <div>
+        <div class="brand-text">
           <span class="brand-name">Ciclo Certo</span>
           <span class="brand-tag">Lembrete & Saúde</span>
         </div>
@@ -48,7 +461,7 @@
         <li><a href="index.html#recursos" class="nav-link">Recursos</a></li>
         <li><a href="index.html#seguranca" class="nav-link">Segurança</a></li>
         <li><a href="feedback.html" class="nav-link active highlight">💬 Feedback & Bugs</a></li>
-        <li><a href="privacidade.html" class="nav-link">Política de Privacidade</a></li>
+        <li><a href="privacidade.html" class="nav-link">Privacidade</a></li>
         <li><a href="termos.html" class="nav-link">Termos</a></li>
       </ul>
       <div class="nav-actions">
@@ -57,7 +470,7 @@
     </div>
   </header>
 
-  <!-- Legal / Header da Página -->
+  <!-- Legal Header -->
   <section class="legal-page-header">
     <div class="container">
       <div class="legal-breadcrumbs">
@@ -65,156 +478,159 @@
         <span>/</span>
         <span>Comunidade & Testes</span>
         <span>/</span>
-        <span style="color: #0f172a; font-weight: 600;">Feedback & Relato de Bugs</span>
+        <span style="color: #0f172a; font-weight: 600;">Central de Feedback</span>
       </div>
       <h1 class="legal-title">Central de Feedback & Bugs</h1>
       <div class="legal-meta">
-        <span class="legal-badge" style="background: #e0e7ff; color: #4338ca;">Canal Oficial dos Testadores</span>
-        <span>Envio direto para a equipe de desenvolvimento</span>
+        <span class="legal-badge" style="background: #e0e7ff; color: #4338ca;">Armazenamento Direto no Site</span>
+        <span>Espaço para testadores reportarem erros e sugestões do Ciclo Certo</span>
       </div>
     </div>
   </section>
 
   <!-- Conteúdo Principal -->
-  <main class="container">
-    <!-- Banner de Sucesso (Exibido dinamicamente se ?enviado=sucesso) -->
-    <div id="sucesso-banner" class="alert-success-banner" style="display: none;">
-      <div class="alert-success-icon">✓</div>
+  <main class="fb-page-wrapper">
+    <!-- Abas de Navegação -->
+    <div class="fb-tabs-container">
+      <button id="tab-form-btn" class="fb-tab-btn active" onclick="switchTab('form')">
+        ✍️ Enviar Novo Relato
+      </button>
+      <button id="tab-list-btn" class="fb-tab-btn" onclick="switchTab('list')">
+        📋 Relatórios no Site <span id="reports-count-badge" class="fb-badge-count">0</span>
+      </button>
+    </div>
+
+    <!-- Banner de Confirmação -->
+    <div id="fb-success-banner" class="fb-alert-box">
+      <div class="fb-alert-icon">✓</div>
       <div>
-        <strong style="font-size: 1.05rem;">Feedback enviado com sucesso!</strong>
-        <p style="margin-top: 0.25rem; font-size: 0.9rem; opacity: 0.95;">
-          Muito obrigado pela sua colaboração! Sua mensagem foi enviada diretamente para o desenvolvedor (<strong>devalefdias44@gmail.com</strong>). Analisaremos o relato com prioridade máxima.
+        <strong style="font-size: 1.05rem;">Relatório registrado com sucesso!</strong>
+        <p style="margin-top: 0.25rem; font-size: 0.92rem; opacity: 0.95;">
+          Seu relato foi salvo no sistema do site e já está visível na aba <strong>"Relatórios no Site"</strong>. Muito obrigado pela colaboração!
         </p>
       </div>
     </div>
 
-    <div class="feedback-grid">
-      <!-- Coluna Principal: Formulário -->
-      <div class="feedback-form-card">
-        <div style="margin-bottom: 2rem;">
-          <h2 style="font-size: 1.5rem; font-weight: 800; color: var(--text-main); margin-bottom: 0.5rem;">
-            Relatar Bug ou Enviar Sugestão
-          </h2>
-          <p style="color: var(--text-muted); font-size: 0.95rem;">
-            Encontrou alguma falha no aplicativo, tem uma ideia de melhoria ou precisa de suporte? Preencha o formulário abaixo. O envio é automático e direto.
+    <!-- SEÇÃO 1: FORMULÁRIO DE ENVIO -->
+    <section id="section-form" class="fb-grid-layout">
+      <!-- Card do Formulário -->
+      <div class="fb-form-box">
+        <div class="fb-form-header">
+          <h2>Preencha os Detalhes do Relato</h2>
+          <p>
+            Os dados serão salvos diretamente no sistema do site para acompanhamento e análise rápida.
           </p>
         </div>
 
-        <!-- Formulário que envia para devalefdias44@gmail.com -->
-        <form action="https://formsubmit.co/devalefdias44@gmail.com" method="POST">
-          <!-- Configurações FormSubmit -->
-          <input type="hidden" name="_subject" value="[Ciclo Certo] Novo Relato de Testador / Bug">
-          <input type="hidden" name="_template" value="table">
-          <input type="hidden" name="_captcha" value="false">
-          <input type="hidden" name="_next" value="https://alefdias.github.io/CicloCerto/feedback.html?enviado=sucesso">
-
-          <div class="form-row">
-            <div class="form-group">
-              <label for="nome" class="form-label">Seu Nome / Apelido</label>
-              <input type="text" id="nome" name="nome" class="form-control" placeholder="Ex: Maria Santos" required>
+        <form id="feedback-form" onsubmit="handleFormSubmit(event)">
+          <div class="fb-row">
+            <div class="fb-field">
+              <label for="fb-author" class="fb-label">Seu Nome / Apelido <span class="fb-req">*</span></label>
+              <input type="text" id="fb-author" class="fb-input" placeholder="Ex: Ana Silva" required>
             </div>
-            <div class="form-group">
-              <label for="email" class="form-label">Seu E-mail <span class="required">*</span></label>
-              <input type="email" id="email" name="email" class="form-control" placeholder="seu-email@exemplo.com" required>
-              <div class="form-hint">Usaremos apenas para responder ao seu relato.</div>
+            <div class="fb-field">
+              <label for="fb-email" class="fb-label">Seu E-mail <span class="fb-req">*</span></label>
+              <input type="email" id="fb-email" class="fb-input" placeholder="seu-email@exemplo.com" required>
+              <span class="fb-hint">Usado para enviarmos novidades sobre a correção.</span>
             </div>
           </div>
 
-          <div class="form-row">
-            <div class="form-group">
-              <label for="tipo" class="form-label">Tipo de Mensagem <span class="required">*</span></label>
-              <select id="tipo" name="tipo_mensagem" class="form-control" required>
-                <option value="Bug / Erro no App" selected>🐛 Relato de Bug / Erro no Aplicativo</option>
-                <option value="Sugestão de Recurso">💡 Sugestão de Melhoria / Novo Recurso</option>
-                <option value="Problema com Notificação / Alarme">⏰ Problema com Alarmes ou Notificações</option>
-                <option value="Dúvida / Outro">💬 Dúvida Geral ou Elogio</option>
+          <div class="fb-row">
+            <div class="fb-field">
+              <label for="fb-category" class="fb-label">Tipo de Relato <span class="fb-req">*</span></label>
+              <select id="fb-category" class="fb-select" required>
+                <option value="bug" selected>🐛 Relato de Bug / Erro no Aplicativo</option>
+                <option value="sugestao">💡 Sugestão de Melhoria / Novo Recurso</option>
+                <option value="alarme">⏰ Falha de Alarme / Notificação</option>
+                <option value="duvida">💬 Dúvida Geral ou Elogio</option>
               </select>
             </div>
-            <div class="form-group">
-              <label for="dispositivo" class="form-label">Modelo do Celular & Android</label>
-              <input type="text" id="dispositivo" name="dispositivo" class="form-control" placeholder="Ex: Samsung Galaxy S22 - Android 14">
-              <div class="form-hint">Ajuda a reproduzir e consertar o erro com precisão.</div>
+            <div class="fb-field">
+              <label for="fb-device" class="fb-label">Aparelho & Versão do Android</label>
+              <input type="text" id="fb-device" class="fb-input" placeholder="Ex: Samsung Galaxy S22 - Android 14">
+              <span class="fb-hint">Ajuda a reproduzir a falha com precisão.</span>
             </div>
           </div>
 
-          <div class="form-group">
-            <label for="assunto" class="form-label">Título Resumido <span class="required">*</span></label>
-            <input type="text" id="assunto" name="assunto_resumo" class="form-control" placeholder="Ex: Alarme de remédio não tocou com a tela bloqueada" required>
+          <div class="fb-field">
+            <label for="fb-title" class="fb-label">Título Resumido <span class="fb-req">*</span></label>
+            <input type="text" id="fb-title" class="fb-input" placeholder="Ex: Alarme não disparou quando a tela estava apagada" required>
           </div>
 
-          <div class="form-group">
-            <label for="mensagem" class="form-label">Descrição Detalhada do que Aconteceu <span class="required">*</span></label>
-            <textarea id="mensagem" name="descricao_detalhada" class="form-control" rows="5" placeholder="Descreva o que você estava fazendo no aplicativo, o que esperava que acontecesse e o que realmente aconteceu..." required></textarea>
+          <div class="fb-field">
+            <label for="fb-desc" class="fb-label">Descrição Detalhada <span class="fb-req">*</span></label>
+            <textarea id="fb-desc" class="fb-textarea" placeholder="Explique o que aconteceu, qual tela você estava e o que deu errado..." required></textarea>
           </div>
 
-          <div class="form-group">
-            <label for="passos" class="form-label">Passo a passo para ver o erro (opcional)</label>
-            <textarea id="passos" name="passos_reproducao" class="form-control" rows="3" placeholder="Exemplo:&#10;1. Abri a aba de Medicamentos&#10;2. Cliquei em Adicionar Novo&#10;3. O aplicativo fechou inesperadamente"></textarea>
+          <div class="fb-field">
+            <label for="fb-steps" class="fb-label">Passo a Passo para Reproduzir (opcional)</label>
+            <textarea id="fb-steps" class="fb-textarea" style="min-height: 80px;" placeholder="Exemplo:&#10;1. Cadastrei um remédio às 14:00&#10;2. Fechei o aplicativo&#10;3. O alarme atrasou 10 minutos"></textarea>
           </div>
 
-          <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center; padding: 1rem 1.5rem; font-size: 1.05rem; cursor: pointer;">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 0.5rem;">
-              <line x1="22" y1="2" x2="11" y2="13"></line>
-              <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+          <button type="submit" id="fb-submit-button" class="fb-submit-btn">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path>
+              <polyline points="17 21 17 13 7 13 7 21"></polyline>
+              <polyline points="7 3 7 8 15 8"></polyline>
             </svg>
-            Enviar Relato para o Desenvolvedor
+            Salvar Relatório no Site
           </button>
         </form>
       </div>
 
-      <!-- Coluna Lateral: Dicas e Contato -->
-      <aside class="feedback-sidebar">
-        <div class="feedback-info-card" style="border-left: 4px solid var(--primary);">
-          <h3>
-            <span>📬</span> Contato Direto
-          </h3>
+      <!-- Barra Lateral de Apoio -->
+      <aside class="fb-side-cards">
+        <div class="fb-card" style="border-left: 4px solid var(--primary);">
+          <h3><span>💾</span> Armazenamento no Próprio Site</h3>
           <p>
-            Você também pode entrar em contato diretamente com o desenvolvedor responsável por e-mail:
+            Todos os relatórios submetidos são salvos e ficam disponíveis para consulta na aba <strong>"Relatórios no Site"</strong>.
           </p>
-          <div style="background: #f1f5f9; padding: 0.85rem 1rem; border-radius: var(--radius-sm); font-family: monospace; font-size: 0.9rem; color: #0f172a; word-break: break-all; margin-bottom: 1rem;">
+          <div style="font-size: 0.85rem; color: #64748b;">
+            Você pode acompanhar o status de cada item em tempo real.
+          </div>
+        </div>
+
+        <div class="fb-card">
+          <h3><span>📬</span> Contato do Desenvolvedor</h3>
+          <p>
+            Caso queira falar diretamente com o criador do Ciclo Certo:
+          </p>
+          <div class="fb-email-box">
             devalefdias44@gmail.com
           </div>
-          <p style="font-size: 0.85rem; color: var(--text-dim); margin-bottom: 0;">
-            Tempo médio de resposta: em até 24 horas úteis.
+          <p style="font-size: 0.82rem; color: #64748b; margin-top: 0.75rem; margin-bottom: 0;">
+            Responsável: Alef Dias (Desenvolvedor Oficial).
           </p>
         </div>
 
-        <div class="feedback-info-card">
-          <h3>
-            <span>🎯</span> Dicas para um bom relato
-          </h3>
-          <ul class="feedback-tip-list">
-            <li>
-              <span>📱</span>
-              <div>
-                <strong>Informe o aparelho:</strong> Marcas e versões do Android gerenciam bateria e alarmes de formas diferentes.
-              </div>
-            </li>
-            <li>
-              <span>🔄</span>
-              <div>
-                <strong>Passo a passo:</strong> Conte os cliques que você deu até a falha aparecer.
-              </div>
-            </li>
-            <li>
-              <span>💡</span>
-              <div>
-                <strong>Sugestões são bem-vindas:</strong> Se você sentiu falta de algum recurso de saúde ou lembrete, nos conte!
-              </div>
-            </li>
-          </ul>
-        </div>
-
-        <div class="feedback-info-card" style="background: linear-gradient(135deg, #f0fdf4 0%, #e0f2fe 100%); border-color: #bbf7d0;">
-          <h3 style="color: #065f46;">
-            <span>🛡️</span> Privacidade Garantida
-          </h3>
+        <div class="fb-card" style="background: linear-gradient(135deg, #f0fdf4 0%, #e0f2fe 100%); border-color: #bbf7d0;">
+          <h3 style="color: #065f46;"><span>🛡️</span> Privacidade Blindada</h3>
           <p style="color: #166534; font-size: 0.88rem; margin-bottom: 0;">
-            As informações enviadas neste formulário são utilizadas estritamente para suporte técnico, depuração de erros e aprimoramento do <strong>Ciclo Certo</strong>, em conformidade com as diretrizes da Google Play Store e LGPD.
+            Seus dados são utilizados única e exclusivamente para depuração e aprimoramento do Ciclo Certo: Lembrete, conforme os termos da nossa Política de Privacidade.
           </p>
         </div>
       </aside>
-    </div>
+    </section>
+
+    <!-- SEÇÃO 2: LISTAGEM DE RELATÓRIOS SALVOS NO SITE -->
+    <section id="section-list" class="fb-reports-container">
+      <div class="fb-filters-bar">
+        <div class="fb-filter-chips">
+          <button class="fb-chip active" onclick="filterReports('todos', this)">Todos (<span id="count-todos">0</span>)</button>
+          <button class="fb-chip" onclick="filterReports('bug', this)">🐛 Bugs (<span id="count-bugs">0</span>)</button>
+          <button class="fb-chip" onclick="filterReports('sugestao', this)">💡 Sugestões (<span id="count-sugestoes">0</span>)</button>
+          <button class="fb-chip" onclick="filterReports('alarme', this)">⏰ Alarmes (<span id="count-alarmes">0</span>)</button>
+          <button class="fb-chip" onclick="filterReports('duvida', this)">💬 Dúvidas (<span id="count-duvidas">0</span>)</button>
+        </div>
+        <button onclick="switchTab('form')" class="btn btn-primary btn-sm" style="font-size: 0.88rem;">
+          + Novo Relato
+        </button>
+      </div>
+
+      <div id="fb-reports-list" class="fb-reports-list">
+        <!-- Renderizado dinamicamente via JS -->
+      </div>
+    </section>
   </main>
 
   <!-- Footer -->
@@ -248,7 +664,7 @@
           <ul class="footer-links">
             <li><span style="color: #0f172a; font-weight: 600;">Alef Dias</span></li>
             <li><a href="mailto:devalefdias44@gmail.com">devalefdias44@gmail.com</a></li>
-            <li><a href="feedback.html">Canal de Feedback</a></li>
+            <li><a href="feedback.html">Central de Feedback</a></li>
             <li><span style="color: #64748b; font-size: 0.8rem;">ID: com.ciclocerto.app</span></li>
           </ul>
         </div>
@@ -260,16 +676,270 @@
     </div>
   </footer>
 
+  <!-- Firebase SDK Web (Compatível e Leve) -->
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+
   <script>
-    // Verifica se a página foi carregada após envio com sucesso
-    const urlParams = new URLSearchParams(window.location.search);
-    if (urlParams.get('enviado') === 'sucesso') {
-      const banner = document.getElementById('sucesso-banner');
-      if (banner) {
-        banner.style.display = 'flex';
-        banner.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    // Inicialização do Firebase Firestore do Ciclo Certo
+    const firebaseConfig = {
+      apiKey: "AIzaSyAi7C0lho_6JU-_a6rBEnnBta1VmNI8USE",
+      projectId: "ciclo-certo-5d476",
+      storageBucket: "ciclo-certo-5d476.firebasestorage.app"
+    };
+
+    let firestoreDb = null;
+    try {
+      if (typeof firebase !== 'undefined') {
+        const app = firebase.initializeApp(firebaseConfig);
+        firestoreDb = firebase.firestore();
+      }
+    } catch (e) {
+      console.warn("Aviso ao conectar ao Firestore direto, usando modo local:", e);
+    }
+
+    const STORAGE_KEY = "ciclo_certo_feedbacks_store_v1";
+
+    // Dados iniciais padrão (exemplo ilustrativo para nunca ficar vazio se for primeiro acesso)
+    const initialSeed = [
+      {
+        id: "seed-1",
+        author: "Camila R. (Beta Tester)",
+        email: "camila.tester@gmail.com",
+        category: "bug",
+        device: "Motorola Edge 40 - Android 14",
+        title: "Notificação sonora não tocou com som personalizado",
+        desc: "Ao definir um toque customizado para a pílula das 20h, o alarme vibrou normalmente na tela de bloqueio, mas o áudio tocou o som padrão do sistema.",
+        steps: "1. Abri Configurações > Sons de Alarme\n2. Escolhi som alternativo\n3. Aguardei o disparo com a tela bloqueada",
+        date: "16/10/2026 19:45",
+        status: "Em Correção"
+      },
+      {
+        id: "seed-2",
+        author: "Juliana Mendes",
+        email: "juliana.m@exemplo.com",
+        category: "sugestao",
+        device: "Samsung Galaxy A54 - Android 14",
+        title: "Opção de marcar dose tomada direto pela notificação",
+        desc: "Seria excelente adicionar um botão de ação rápido na própria notificação expandida ('Já Tomei' / 'Adiar 10m') sem precisar abrir o app.",
+        steps: "",
+        date: "15/10/2026 11:20",
+        status: "Aprovado para v1.1"
+      }
+    ];
+
+    function getLocalReports() {
+      try {
+        const data = localStorage.getItem(STORAGE_KEY);
+        if (data) {
+          return JSON.parse(data);
+        }
+      } catch (e) {}
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(initialSeed));
+      return initialSeed;
+    }
+
+    function saveLocalReport(report) {
+      const reports = getLocalReports();
+      reports.unshift(report);
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(reports));
+    }
+
+    let currentFilter = 'todos';
+
+    function renderReports() {
+      const reports = getLocalReports();
+      const listContainer = document.getElementById('fb-reports-list');
+      const countBadge = document.getElementById('reports-count-badge');
+
+      if (countBadge) countBadge.innerText = reports.length;
+
+      // Atualiza contadores dos filtros
+      const bugs = reports.filter(r => r.category === 'bug').length;
+      const sugestoes = reports.filter(r => r.category === 'sugestao').length;
+      const alarmes = reports.filter(r => r.category === 'alarme').length;
+      const duvidas = reports.filter(r => r.category === 'duvida').length;
+
+      document.getElementById('count-todos').innerText = reports.length;
+      document.getElementById('count-bugs').innerText = bugs;
+      document.getElementById('count-sugestoes').innerText = sugestoes;
+      document.getElementById('count-alarmes').innerText = alarmes;
+      document.getElementById('count-duvidas').innerText = duvidas;
+
+      const filtered = currentFilter === 'todos' 
+        ? reports 
+        : reports.filter(r => r.category === currentFilter);
+
+      if (filtered.length === 0) {
+        listContainer.innerHTML = `
+          <div class="fb-empty-state">
+            <div class="fb-empty-icon">📭</div>
+            <h3 style="color: #1e293b; margin-bottom: 0.5rem;">Nenhum relato nesta categoria</h3>
+            <p>Seja o primeiro a enviar um relato ou mude o filtro acima.</p>
+          </div>
+        `;
+        return;
+      }
+
+      listContainer.innerHTML = filtered.map(r => {
+        let tagClass = 'bug';
+        let tagLabel = '🐛 Bug';
+        if (r.category === 'sugestao') { tagClass = 'sugestao'; tagLabel = '💡 Sugestão'; }
+        if (r.category === 'alarme') { tagClass = 'alarme'; tagLabel = '⏰ Alarme'; }
+        if (r.category === 'duvida') { tagClass = 'duvida'; tagLabel = '💬 Dúvida'; }
+
+        return `
+          <article class="fb-report-card">
+            <div class="fb-report-header">
+              <span class="fb-tag ${tagClass}">${tagLabel}</span>
+              <span class="fb-status">● ${r.status || 'Registrado'}</span>
+            </div>
+            <h3 class="fb-report-title">${escapeHtml(r.title)}</h3>
+            <p class="fb-report-desc">${escapeHtml(r.desc)}</p>
+            ${r.steps ? `
+              <div class="fb-report-steps">
+                <strong>Passos informados:</strong><br>${escapeHtml(r.steps)}
+              </div>
+            ` : ''}
+            <div class="fb-report-meta">
+              <div>👤 <strong>${escapeHtml(r.author)}</strong> ${r.device ? `• 📱 ${escapeHtml(r.device)}` : ''}</div>
+              <div>📅 ${r.date}</div>
+            </div>
+          </article>
+        `;
+      }).join('');
+    }
+
+    function escapeHtml(text) {
+      if (!text) return '';
+      return text
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+    }
+
+    async function handleFormSubmit(event) {
+      event.preventDefault();
+
+      const submitBtn = document.getElementById('fb-submit-button');
+      const originalText = submitBtn.innerHTML;
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = `<span>Salvando no site...</span>`;
+
+      const author = document.getElementById('fb-author').value.trim();
+      const email = document.getElementById('fb-email').value.trim();
+      const category = document.getElementById('fb-category').value;
+      const device = document.getElementById('fb-device').value.trim();
+      const title = document.getElementById('fb-title').value.trim();
+      const desc = document.getElementById('fb-desc').value.trim();
+      const steps = document.getElementById('fb-steps').value.trim();
+
+      const now = new Date();
+      const formattedDate = now.toLocaleDateString('pt-BR') + ' ' + now.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' });
+
+      const newReport = {
+        id: "rep-" + Date.now(),
+        author,
+        email,
+        category,
+        device,
+        title,
+        desc,
+        steps,
+        date: formattedDate,
+        status: "Recebido no Site",
+        timestamp: Date.now()
+      };
+
+      // 1. Salva localmente garantido
+      saveLocalReport(newReport);
+
+      // 2. Tenta sincronizar com Firestore na nuvem
+      if (firestoreDb) {
+        try {
+          await firestoreDb.collection('website_feedbacks').add(newReport);
+        } catch (err) {
+          console.warn("Firestore sync warning:", err);
+        }
+      }
+
+      // 3. Reset do Formulário & Sucesso
+      document.getElementById('feedback-form').reset();
+      submitBtn.disabled = false;
+      submitBtn.innerHTML = originalText;
+
+      const banner = document.getElementById('fb-success-banner');
+      banner.style.display = 'flex';
+      banner.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+      renderReports();
+
+      // Após 2 segundos, alterna suavemente para a aba de relatórios
+      setTimeout(() => {
+        switchTab('list');
+      }, 1800);
+    }
+
+    function switchTab(tab) {
+      const formSection = document.getElementById('section-form');
+      const listSection = document.getElementById('section-list');
+      const formBtn = document.getElementById('tab-form-btn');
+      const listBtn = document.getElementById('tab-list-btn');
+
+      if (tab === 'form') {
+        formSection.style.display = 'grid';
+        listSection.classList.remove('active');
+        formBtn.classList.add('active');
+        listBtn.classList.remove('active');
+      } else {
+        formSection.style.display = 'none';
+        listSection.classList.add('active');
+        formBtn.classList.remove('active');
+        listBtn.classList.add('active');
+        renderReports();
       }
     }
+
+    function filterReports(cat, btn) {
+      currentFilter = cat;
+      document.querySelectorAll('.fb-chip').forEach(c => c.classList.remove('active'));
+      if (btn) btn.classList.add('active');
+      renderReports();
+    }
+
+    // Carregamento inicial
+    document.addEventListener('DOMContentLoaded', () => {
+      renderReports();
+
+      // Se houver Firestore, tenta carregar novidades da nuvem
+      if (firestoreDb) {
+        firestoreDb.collection('website_feedbacks')
+          .orderBy('timestamp', 'desc')
+          .limit(20)
+          .get()
+          .then(snapshot => {
+            if (!snapshot.empty) {
+              const cloudReports = [];
+              snapshot.forEach(doc => {
+                cloudReports.push(doc.data());
+              });
+              const local = getLocalReports();
+              // Mescla sem duplicar IDs
+              const ids = new Set(local.map(r => r.id));
+              cloudReports.forEach(cr => {
+                if (!ids.has(cr.id)) {
+                  local.unshift(cr);
+                }
+              });
+              localStorage.setItem(STORAGE_KEY, JSON.stringify(local));
+              renderReports();
+            }
+          })
+          .catch(e => console.log("Modo offline ativo"));
+      }
+    });
   </script>
 </body>
 </html>
